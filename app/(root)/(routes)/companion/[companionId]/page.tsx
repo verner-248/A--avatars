@@ -10,10 +10,10 @@ interface CompanionIdPageProps{
 
 
 const CompanionIdPage = async({params}: CompanionIdPageProps) => {
-
+    const resolvedParams = await params; // Await params before accessing properties
     const companion = await prismadb.companion.findUnique({
         where: {
-            id: params?.companionId
+            id: resolvedParams.companionId
         },
     });
 
